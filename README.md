@@ -232,3 +232,17 @@ Project currently under active development.
 ## WireGuard
 
 ![WireGuard](screenshots/wire.png)
+
+## Technitium DNS
+
+![Technitium](screenshots/dns.png)
+
+---
+
+## Duplicati
+
+![Duplicati](screenshots/duplicati.png)
+
+## Nextcloud
+
+![Nextcloud](screenshots/next.png)
