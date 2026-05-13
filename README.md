@@ -176,3 +176,59 @@ Infrastructure should be:
 # Status
 
 Project currently under active development.
+
+---
+
+# Screenshots
+
+## Homepage Dashboard
+
+![Homepage](screenshots/home.png)
+
+---
+
+## Nginx Proxy Manager
+
+![NPM](screenshots/npm.png)
+
+---
+
+## Uptime Kuma
+
+![Kuma](screenshots/kuma.png)
+
+---
+
+## Portainer Local
+
+![Portainer Local](screenshots/portainer.local.png)
+
+---
+
+## Portainer Stacks
+
+![Portainer Stacks](screenshots/portainer.local.stacks.png)
+
+---
+
+## Portainer Remote Apps Host
+
+![Portainer Apps](screenshots/portainer.apps.stacks.png)
+
+---
+
+## Nextcloud
+
+![Nextcloud](screenshots/next.png)
+
+---
+
+## Vaultwarden
+
+![Vaultwarden](screenshots/vault.png)
+
+---
+
+## WireGuard
+
+![WireGuard](screenshots/wire.png)
