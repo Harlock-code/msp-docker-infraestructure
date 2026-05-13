@@ -1,0 +1,23 @@
+services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+
+    restart: unless-stopped
+
+    volumes:
+      - ${DOCKER_SOCKET}:/var/run/docker.sock
+
+    environment:
+      - TZ=${TIMEZONE}
+      - WATCHTOWER_CLEANUP=${WATCHTOWER_CLEANUP}
+      - DOCKER_API_VERSION=${DOCKER_API_VERSION}
+
+    command: --interval ${WATCHTOWER_INTERVAL}
+
+    networks:
+      - monitoring_net
+
+networks:
+  monitoring_net:
+    external: true

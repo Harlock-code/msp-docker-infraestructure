@@ -1,0 +1,23 @@
+services:
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+
+    restart: unless-stopped
+
+    volumes:
+      - ${DOCKER_SOCKET}:/var/run/docker.sock
+
+    ports:
+      - "${DOZZLE_PORT}:8080"
+
+    networks:
+      - proxy_net
+      - monitoring_net
+
+networks:
+  proxy_net:
+    external: true
+
+  monitoring_net:
+    external: true

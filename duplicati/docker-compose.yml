@@ -1,0 +1,31 @@
+services:
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+
+    restart: unless-stopped
+
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+
+      - SETTINGS_ENCRYPTION_KEY=${SETTINGS_KEY}
+      - DUPLICATI__WEBSERVICE_PASSWORD=${DUPLICATI_PASSWORD}
+      - DUPLICATI__WEBSERVICE_ALLOWED_HOSTNAMES=${ALLOWED_HOSTS}
+
+    ports:
+      - "${DUPLICATI_PORT}:8200"
+
+    volumes:
+      - ${DUPLICATI_CONFIG}:/config
+      - ${BACKUP_STORAGE}:/backups
+      - ${STACKS_SOURCE}:/source/stacks:ro
+      - ${DATA_SOURCE}:/source/data:ro
+
+    networks:
+      - proxy_net
+
+networks:
+  proxy_net:
+    external: true

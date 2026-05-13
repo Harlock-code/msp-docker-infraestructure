@@ -1,0 +1,28 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+
+    restart: unless-stopped
+
+    ports:
+      - "${HOMEPAGE_PORT}:3000"
+
+    volumes:
+      - ${HOMEPAGE_CONFIG}:/app/config
+      - ${DOCKER_SOCKET}:/var/run/docker.sock:ro
+
+    environment:
+      - TZ=${TIMEZONE}
+      - HOMEPAGE_ALLOWED_HOSTS=${ALLOWED_HOSTS}
+
+    networks:
+      - proxy_net
+      - monitoring_net
+
+networks:
+  proxy_net:
+    external: true
+
+  monitoring_net:
+    external: true

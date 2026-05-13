@@ -1,0 +1,31 @@
+# ENV
+.env
+
+# Backups
+backups/
+
+# Certificates
+*.pem
+*.key
+*.crt
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# App data
+data/
+config/
+
+# Secrets
+secrets/

@@ -1,0 +1,27 @@
+services:
+  technitium-dns:
+    image: technitium/dns-server:latest
+    container_name: technitium-dns
+    hostname: technitium-dns
+
+    restart: unless-stopped
+
+    ports:
+      - "${DNS_PORT}:53/udp"
+      - "${DNS_PORT}:53/tcp"
+      - "${WEB_PORT}:5380/tcp"
+
+    environment:
+      - DNS_SERVER_DOMAIN=${DNS_DOMAIN}
+      - DNS_SERVER_LOG_USING_LOCAL_TIME=${DNS_LOG_LOCALTIME}
+      - TZ=${TIMEZONE}
+
+    volumes:
+      - ${DNS_CONFIG}:/etc/dns
+
+    networks:
+      - proxy_net
+
+networks:
+  proxy_net:
+    external: true
