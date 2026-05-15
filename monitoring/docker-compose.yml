@@ -22,6 +22,8 @@ services:
       - ${GRAFANA_DATA}:/var/lib/grafana
     environment:
       - TZ=${TIMEZONE}
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
 
   loki:
     image: grafana/loki:latest
