@@ -1,0 +1,23 @@
+apiVersion: 1
+
+groups:
+  - orgId: 1
+    name: cpu-alerts
+    folder: Infrastructure
+    interval: 1m
+    rules:
+      - uid: high_cpu_usage
+        title: High CPU Usage
+        condition: A
+        data:
+          - refId: A
+            datasourceUid: prometheus
+            model:
+              expr: 100 - (avg by(instance)(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+              intervalMs: 1000
+              maxDataPoints: 43200
+        for: 5m
+        annotations:
+          summary: CPU usage above 80%
+        labels:
+          severity: warning
