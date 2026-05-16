@@ -20,10 +20,14 @@ services:
       - "${GRAFANA_PORT}:3000"
     volumes:
       - ${GRAFANA_DATA}:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
     environment:
       - TZ=${TIMEZONE}
       - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+    networks:
+      - proxy_net
+      - default
 
   loki:
     image: grafana/loki:latest
@@ -44,3 +48,7 @@ services:
       - /var/log:/var/log:ro
       - ${PROMTAIL_CONFIG}/promtail-config.yml:/etc/promtail/config.yml
     command: -config.file=/etc/promtail/config.yml
+
+networks:
+  proxy_net:
+    external: true
