@@ -37,3 +37,6 @@ secrets/
 *.secret
 *.key
 *.pem
+monitoring/grafana/provisioning/alerting/contact-points.yml
+monitoring/grafana/provisioning/alerting/
+monitoring/grafana/provisioning/datasources/
